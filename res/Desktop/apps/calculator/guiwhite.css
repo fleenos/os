@@ -1,0 +1,21 @@
+.btncalc{
+  background-color: rgba(24, 24, 24, 0);
+  border: 1px solid rgba(219, 219, 219, 0.849);
+  backdrop-filter: blur(1px);
+  border-radius: 8px;
+  font-size: 30px;
+  width: 22vw;
+  height: 19vh;
+  color: rgb(0, 0, 0);
+  font-family: 'Noto Sans SC', sans-serif;
+}
+.inptcalc{
+border-radius: 8px;
+width: 90.7vw;
+height: 15vh;
+font-size: 56px;
+background-color: rgba(24, 24, 24, 0);
+border: 1px solid rgba(214, 214, 214, 0.849);
+color: rgb(0, 0, 0);
+font-family: 'Noto Sans SC', sans-serif;
+}

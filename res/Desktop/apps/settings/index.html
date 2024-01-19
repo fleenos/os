@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap');
+    </style>
+    <link id="theme-style" rel="stylesheet" href="guiblack.css">
+    <script>
+function setStyle(styleName) {
+    localStorage.setItem('FleenOS_selectedStyle', styleName);
+    document.getElementById('theme-style').setAttribute('href', styleName);
+  }          
+  var selectedStyle = localStorage.getItem('FleenOS_selectedStyle');
+  if (selectedStyle) {
+    document.getElementById('theme-style').setAttribute('href', selectedStyle);
+  }
+  document.getElementById('theme-style').setAttribute('href', selectedStyle);
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var selectedBackground = localStorage.getItem('selectedBackground');
+    if (selectedBackground) {
+      document.body.style.backgroundImage = `url(${selectedBackground})`;
+    }
+  });
+
+  window.addEventListener('message', function(event) {
+    if (event.data === 'themeChanged') {
+      var selectedStyle = localStorage.getItem('FleenOS_selectedStyle');
+      if (selectedStyle) {
+        document.getElementById('theme-style').setAttribute('href', selectedStyle);
+      }
+    }
+  });
+  </script>
+
+</head>
+<!--Надеюсь, Fleen5177, в 2024 ты научишься писать код-->
+<!-- Привет Fleen5177 из прошлого! если что это настройки из 10 стекляшек, которые я зобросил. недеюсь в 2025 году сюда вернусь...-->
+<body>
+    <div id="sidebar">
+      <ul>
+        <h3 class="settings-title">Настройки</h3>
+        <li><a href="#" onclick="showDisplaySettings()">Приветствие</a></li>
+        <li><a href="#" onclick="showSoundSettings()">Конфигурация</a></li>
+        <li><a href="#" onclick="showNetworkSettings()">Персонализация</a></li>
+      </ul>
+    </div>
+    <div id="content">
+      <div id="displaySettings" style="display: none;">
+        <h2 class="settings-title">приветствие</h2>
+        <p>Дарова</p>
+      </div>
+      <div id="soundSettings" style="display: none;">
+        <h2 class="settings-title">Конфигурация</h2>
+        <h2 class="settings-title">Добавление приложений</h2>
+
+        <script>
+          function saveAppsList() {
+            var appsList = document.getElementById('appsList').value;
+            var appsArray = appsList.split(',');
+            localStorage.setItem('FleenOS_appslist', JSON.stringify(appsArray));
+          }
+        
+          function saveDockAppsList() {
+            var dockAppsList = document.getElementById('dockAppsList').value;
+            var dockAppsArray = dockAppsList.split(',');
+            localStorage.setItem('FleenOS_appslist_dock', JSON.stringify(dockAppsArray));
+          }
+        
+          // Получение ранее введенного текста и установка его в input
+          window.onload = function() {
+            var savedAppsList = localStorage.getItem('FleenOS_appslist');
+            if (savedAppsList) {
+              document.getElementById('appsList').value = JSON.parse(savedAppsList).join(', ');
+            }
+            
+            var savedDockAppsList = localStorage.getItem('FleenOS_appslist_dock');
+            if (savedDockAppsList) {
+              document.getElementById('dockAppsList').value = JSON.parse(savedDockAppsList).join(', ');
+            }
+          };
+        </script>
+        
+        <h3 class="settings-title">Добавление приложений для Launchpad</h3>
+        <input class="smirqed" type="text" id="appsList">
+        <button onclick="saveAppsList()">Сохранить</button>
+        
+        <h3 class="settings-title">Добавление приложений для Dock</h3>
+        <input type="text" id="dockAppsList">
+        <button onclick="saveDockAppsList()">Сохранить</button>
+        
+        <h3 style="color: yellow; font-family: 'Noto Sans SC', sans-serif;">Для применения настроек может потребоваться перезагрузка страницы (F5)!</h3>
+        
+           
+      </div>
+      <div id="networkSettings" style="display: none;">
+        <h2 class="settings-title">Персонализация</h2>
+        <script>
+          function setStyleAndNotify(styleName) {
+            localStorage.setItem('FleenOS_selectedStyle', styleName);
+            document.getElementById('theme-style').setAttribute('href', styleName);
+            window.parent.postMessage('themeChanged', '*');
+          }
+        </script>s
+<h3 class="settings-title">Цветовая тема</h3>
+<div>
+<button onclick="setStyleAndNotify('guiblack.css')">Темный стиль</button>
+<button onclick="setStyleAndNotify('guiwhite.css')">Светлый стиль</button>
+</div>
+<h3 class="settings-title">Обои рабочего стола</h3>
+<div class="bgselectordiv">
+<img class="bgselector" src="../../../img/bg/image1.jpg" onclick="setSelectedBackground('../img/bg/image1.jpg')">
+<img class="bgselector" src="../../../img/bg/image2.jpg" onclick="setSelectedBackground('../img/bg/image2.jpg')">
+<img class="bgselector" src="../../../img/bg/image3.jpg" onclick="setSelectedBackground('../img/bg/image3.jpg')">
+</div>
+<h3 style="color: yellow; font-family: 'Noto Sans SC', sans-serif;">Для применения настроек может потребоваться перезагрузка страницы (F5)!</h3>
+<script>
+function setSelectedBackground(background) {
+  localStorage.setItem('selectedBackground', background);
+}
+</script>
+      </div>
+    </div>
+  
+    <script>
+      function showDisplaySettings() {
+        document.getElementById('displaySettings').style.display = 'block';
+        document.getElementById('soundSettings').style.display = 'none';
+        document.getElementById('networkSettings').style.display = 'none';
+      }
+  
+      function showSoundSettings() {
+        document.getElementById('displaySettings').style.display = 'none';
+        document.getElementById('soundSettings').style.display = 'block';
+        document.getElementById('networkSettings').style.display = 'none';
+      }
+  
+      function showNetworkSettings() {
+        document.getElementById('displaySettings').style.display = 'none';
+        document.getElementById('soundSettings').style.display = 'none';
+        document.getElementById('networkSettings').style.display = 'block';
+      }
+      // Если я открою дверь, в нее может уйти старый год, а мне в старом году надо еще кое-что доделать 
+    </script>
+    <script>
+      window.addEventListener('message', function(event) {
+  if (event.data === 'themeChanged') {
+    var selectedStyle = localStorage.getItem('FleenOS_selectedStyle');
+    if (selectedStyle) {
+      document.getElementById('theme-style').setAttribute('href', selectedStyle);
+    }
+  }
+});
+    </script>
+
+  </body>
+  
+</html>

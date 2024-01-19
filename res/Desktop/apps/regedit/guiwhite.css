@@ -1,0 +1,76 @@
+.adativetext {
+  color: rgb(0, 0, 0);
+  font-family: 'Noto Sans SC', sans-serif;
+  }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: block;
+    height: 90vh;
+  }
+
+  input {
+    font-weight: 500;
+    border: 1px solid black;
+    color: black;
+    background-color: #ffffff6b;
+    min-width: 90px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    padding: 4px 14px 4px 14px;
+    border-radius: 6px;
+  }
+
+  button {
+    font-weight: 500;
+    border: 1px solid black;
+    color: black;
+    background-color: #ffffff6b;
+    min-width: 90px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    padding: 4px 14px 4px 14px;
+    border-radius: 6px;
+}
+.bgselector {
+  height: 77px;
+  border-radius: 21px;
+}
+
+.bgselectordiv {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#sidebar {
+  width: 200px;
+  background-color: #f0f0f0;
+  border-right: 1px solid #ccc;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+ul {
+  left: 10px;
+  color: rgb(0, 0, 0);
+  font-family: 'Noto Sans SC', sans-serif;
+  position: absolute;
+}
+
+#keyinput {
+  left: 100px;
+  position: absolute;
+}
+
+.rpanel {
+  width: calc(100vw - 400px);
+  height: 89vh;
+  padding-top: 50px;
+  padding-left: 262px;
+}

@@ -1,0 +1,123 @@
+<html>
+<head>
+<title>EXPLORER_1057 Alarm</title>
+<style>
+input{
+text-align: center;
+}
+</style>
+<script language="JavaScript">
+var timer=null;
+var timerrun=false;
+function stoptime() {
+    if(timerrun)
+    clearTimeout(timer);
+    timerrun=false;
+}
+function starttime() {
+    stoptime();
+    showtime();
+    //document.clock.next1.style.textAlign = "center";
+}
+function showtime() 
+{
+
+var all = new Date();
+var year = all.getFullYear();
+var month = all.getMonth();
+var day = all.getDate();
+var hours=all.getHours();
+var minutes=all.getMinutes();
+var seconds=all.getSeconds();
+var datavalue =" " + day + "."
+datavalue += (month+1) + "."
+datavalue += year;
+var timevalue=datavalue + " " + hours
+timevalue += ((minutes<10) ? " :0" : " : ") + minutes
+timevalue += ((seconds<10) ? " :0" : " : ") + seconds
+document.clock.next.value=timevalue;
+if (document.clock.next1.value == hours && document.clock.next2.value == minutes && document.clock.next3.value == seconds)
+ alert("ПОДЪЕМ EXPLORER_1057!!! Тебя ждет славянский зажим яйцами!!!!!!!");
+ timer=setTimeout('showtime()',1000);
+ timerrun=true;
+}
+function changeHours(){
+	var b = document.clock.next1;
+	validateInput( b, 2 );
+	if( b.value.length >= 2 ){
+	   document.clock.next2.focus();
+	}
+}
+function changeMinutes (){
+	var b = document.clock.next2;
+	validateInput( b, 2 );
+	if( b.value.length >= 2 ){
+	   document.clock.next3.focus();
+	}
+}
+function changeSeconds (){
+	var b = document.clock.next3;
+	validateInput( b, 2 );
+	if( b.value.length >= 2 ){
+	   document.clock.next3.blur();
+	}
+}
+function validateInput ( b, amount ){
+	var s = b.value;
+	if( (s) && s.length > 0 ){
+		if( s.length > 2 ){
+			b.value = s.substr( 0, s.length-1 );
+		}else if( s.length > 0 ){
+			if( isNaN( parseInt( s.charAt( s.length-1 ) ) )   ){
+				if( s.length > 1 ){
+					b.value = s.substr( 0, s.length-1 );
+				}else{
+					b.value = "";
+				}
+			}
+		}
+	}
+}
+</script>
+<script>
+	var WindowID
+
+window.addEventListener('message', function (event) {
+    if (event.data.startsWith('YourID-')) {
+        WindowID = Number(event.data.replace('YourID-', ''))
+        /* Установка заголовка */ sendToTop('SetWindowHeader' + WindowID + '|' + $('title').html())  
+        /* Установка иконки    */ sendToTop('SetWindowIcon' + WindowID + '|' + '../mods/apps/okna-testdesktopapp/icon.png')        
+    }
+})
+
+function killWindow () { // Функция закрывает окно
+    sendToTop('KillWindow_' + WindowID)
+}
+
+</script>
+<body style="background-image: url('bg.jpg');" text=8B4513 onLoad="starttime()">
+<center>
+<H3>Clock</H3>
+<form name=clock>
+<input type=text name=next size=25 value=' '>
+</center>
+<center>
+<H3>EXPLORER_1057 Alarm</H3>
+<input type=text name=next1 size=1  placeholder='hours' value='' oninput="changeHours()" >:<input type=text name=next2 size=1 placeholder='min' value='' oninput="changeMinutes()" >:<input type=text name=next3 size=1 placeholder='sec' value='' oninput="changeSeconds()" >
+</center>
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap');
+  </style>
+  <link id="theme-style" rel="stylesheet" href="guiblack.css">
+<script>
+  var selectedStyle = localStorage.getItem('FleenOS_selectedStyle');
+  if (selectedStyle) {
+  document.getElementById('theme-style').setAttribute('href', selectedStyle);
+  }
+</script>
+</head>
+   <body>
+      <div id="editor" contenteditable="true"
+        style="display: block; height: 50%; width: auto; text-align: left; left: -36px; outline: none; position: static;">
+      </div>
+      <script>
+        if (localStorage.getItem('text_in_editor') !== null) {
+          document.getElementById('editor').innerHTML = localStorage.getItem('text_in_editor');
+        }
+        document.addEventListener('keydown', function (e) {
+          localStorage.setItem('text_in_editor', document.getElementById('editor').innerHTML);
+        });
+      </script>
+    </body>

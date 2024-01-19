@@ -1,0 +1,44 @@
+.adativetext {
+  color: rgb(0, 0, 0);
+  font-family: 'Noto Sans SC', sans-serif;
+  }
+
+  .smirqed {
+    font-weight: 500;
+    border: 1px solid black;
+    color: black;
+    background-color: #ffffff6b;
+    min-width: 90px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    padding: 4px 14px 4px 14px;
+    border-radius: 6px;
+  }
+
+  button {
+    font-weight: 500;
+    border: 1px solid black;
+    color: black;
+    background-color: #ffffff6b;
+    min-width: 90px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    padding: 4px 14px 4px 14px;
+    border-radius: 6px;
+}
+
+select {
+  font-weight: 500;
+  border: 1px solid black;
+  color: black;
+  background-color: #ffffff6b;
+  min-width: 90px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 16px;
+  padding: 4px 14px 4px 14px;
+  border-radius: 6px;
+}
+  

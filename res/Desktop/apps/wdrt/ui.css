@@ -1,0 +1,51 @@
+* {
+  background-color: white;
+  font-family: 'Segoe UI';
+}
+.adativetext{
+  color: rgb(0, 0, 0);
+  font-family: 'Segoe UI Light';
+  }
+
+  .smirqed {
+    font-weight: 500;
+    border: 1px solid black;
+    color: black;
+    background-color: white;
+    min-width: 90px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    padding: 4px 14px 4px 14px;
+    border-radius: 6px;
+    font-family: 'Segoe UI Light';
+  }
+
+  button {
+    font-weight: 500;
+    border: 1px solid black;
+    color: black;
+    background-color: white;
+    min-width: 90px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    padding: 4px 14px 4px 14px;
+    border-radius: 1px;
+    font-family: 'Segoe UI';
+}
+
+select {
+  font-weight: 500;
+  border: 1px solid black;
+  color: black;
+  background-color: white;
+  min-width: 90px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 16px;
+  padding: 4px 14px 4px 14px;
+  border-radius: 6px;
+  font-family: 'Segoe UI Light';
+}
+  

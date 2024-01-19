@@ -1,0 +1,124 @@
+@import url('guiwhite.css');
+
+.dock{
+    width: 80vw;
+    height: 77px;
+    position: fixed;
+    bottom: 20px;
+     left: 10%;
+     background-color: rgba(240, 240, 240, 0.507);
+     border: 1px solid rgba(206, 206, 206, 0.849);
+     backdrop-filter: blur(15px);
+     border-radius: 8px;
+     transition-property: background-color;
+     transition-duration: 1s;
+}
+
+  .window{
+  position: fixed;
+  background-color: rgba(209, 209, 209, 0.623);
+  border: 1px solid rgba(255, 255, 255, 0.849);
+  backdrop-filter: blur(15px);
+  border-radius: 8px;
+    transform: translateY(20px);
+    transform: translateY(0);
+
+  }
+
+  .title-bar{
+    background-color: rgba(216, 216, 216, 0.623);
+    border-radius: 8px;
+  }
+
+  .resize-handle {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #ff000000;
+    cursor: nwse-resize;
+  }
+  
+  .dockico{
+    height: 77px;
+    border-radius: 21px;
+  }
+  
+  .Launchpad {
+    width: 90vw;
+    height: 0; /* Начальная высота 0 */
+    position: fixed;
+    bottom: 110px;
+    left: 5%;
+    background-color: rgba(240, 240, 240, 0.507);
+    backdrop-filter: blur(15px);
+    border-radius: 8px;
+    overflow: hidden; /* Скрыть содержимое, когда высота равна 0 */
+    transition: height 0.5s; /* Анимация изменения высоты */
+  }
+  
+  .Launchpad.open {
+    height: 677px; /* Высота при открытии */
+    border: 1px solid rgba(206, 206, 206, 0.849);
+  }
+
+  .Launchpadh1{
+    color: #000000d3;
+    font-family: 'Noto Sans SC'
+  }
+
+  .lapps{
+    width: 70vw;
+    height: 231px;
+    position: fixed;
+    top: 15%;
+    left: 10%;
+     background-color: rgba(240, 240, 240, 0.507);
+     border: 1px solid rgba(206, 206, 206, 0.849);
+     backdrop-filter: blur(15px);
+     border-radius: 8px;
+}
+
+.lactivity{
+  width: 70vw;
+  height: 231px;
+  position: fixed;
+  top: 60%;
+  left: 10%;
+   background-color: rgba(240, 240, 240, 0.507);
+   border: 1px solid rgba(206, 206, 206, 0.849);
+   backdrop-filter: blur(15px);
+   border-radius: 8px;
+}
+
+
+.aipad {
+  width: 30vw;
+  height: 0; /* Начальная высота 0 */
+  position: fixed;
+  bottom: 110px;
+  left: 5%;
+  background-color: rgba(240, 240, 240, 0.507);
+  backdrop-filter: blur(15px);
+  border-radius: 8px;
+  overflow: hidden; /* Скрыть содержимое, когда высота равна 0 */
+  transition: height 0.5s; /* Анимация изменения высоты */
+}
+
+.aipad.open {
+  height: 677px; /* Высота при открытии */
+  border: 1px solid rgba(206, 206, 206, 0.849);
+
+}
+.adativetext{
+  color: rgb(0, 0, 0);
+  font-family: 'Noto Sans SC', sans-serif;
+  }
+
+  .headericonadaptive {
+    filter: invert(1);
+  }
+
+  .minimize-btn {
+    filter: invert(1);
+  }
+

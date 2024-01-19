@@ -1,0 +1,40 @@
+<html>
+     <head>
+         <title>HTML Calculator</title>
+     </head>
+     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap');
+    </style>
+    <link id="theme-style" rel="stylesheet" href="guiblack.css">
+    <script>
+     var selectedStyle = localStorage.getItem('FleenOS_selectedStyle');
+     if (selectedStyle) {
+     document.getElementById('theme-style').setAttribute('href', selectedStyle);
+     }
+   </script>
+<form name="calculator">
+    <input class="inptcalc" type="textfield" name="ans" value="">
+    <br>
+     <input class="btncalc" type="button" value="1" onClick="document.calculator.ans.value+='1'">
+     <input class="btncalc" type="button" value="2" onClick="document.calculator.ans.value+='2'">
+     <input class="btncalc" type="button" value="3" onClick="document.calculator.ans.value+='3'">
+     <input class="btncalc" type="button" value="*" onClick="document.calculator.ans.value+='*'">
+<br>
+     <input class="btncalc" type="button" value="4" onClick="document.calculator.ans.value+='4'">
+     <input class="btncalc" type="button" value="5" onClick="document.calculator.ans.value+='5'">
+     <input class="btncalc" type="button" value="6" onClick="document.calculator.ans.value+='6'">
+     <input class="btncalc" type="button" value="/" onClick="document.calculator.ans.value+='/'">
+<br>
+     <input class="btncalc" type="button" value="7" onClick="document.calculator.ans.value+='7'">
+     <input class="btncalc" type="button" value="8" onClick="document.calculator.ans.value+='8'">
+     <input class="btncalc" type="button" value="9" onClick="document.calculator.ans.value+='9'">
+     <input class="btncalc" type="button" value="-" onClick="document.calculator.ans.value+='-'">
+<br>
+     <input class="btncalc" type="button" value="0" onClick="document.calculator.ans.value+='0'">
+     <input class="btncalc" type="reset" value="C">
+     <input class="btncalc" type="button" value="=" onClick="document.calculator.ans.value=eval(document.calculator.ans.value)">
+     <input class="btncalc" type="button" value="+" onClick="document.calculator.ans.value+='+'">
+<br>
+</form>
+</body>
+</html>

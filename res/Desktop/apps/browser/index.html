@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta charset="UTF-8">
+        <script src="script.js"></script>
+        <title>Okna8 Test Desktop App</title>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap');
+      </style>
+          <link id="theme-style" rel="stylesheet" href="guiblack.css">
+          <script>var selectedStyle = localStorage.getItem('FleenOS_selectedStyle');
+            if (selectedStyle) {
+            document.getElementById('theme-style').setAttribute('href', selectedStyle);
+            } 
+            </script>
+        <script>
+          var WindowID
+
+          window.addEventListener('message', function (event) {
+              if (event.data.startsWith('YourID-')) {
+                  WindowID = Number(event.data.replace('YourID-', ''))
+                  sendToTop('SetWindowHeader' + WindowID + '|' + $('title').html())  
+                  sendToTop('SetWindowIcon' + WindowID + '|' + '../mods/apps/fleen5177-LineWeb/icon.png')
+                  ConnectScript('script.js')
+              }
+          })
+
+          function killWindow () {
+              sendToTop('KillWindow_' + WindowID)
+          }
+      </script>
+    </head>
+    <body>
+       
+            <div class="tabs">
+              <button class="add-tab-button" onclick="addTab()">+</button>
+              <div class="tab-bar" id="tab-bar"></div>
+            </div>
+            <div class="search-bar">
+              <input type="text" id="search-input" placeholder="Введите запрос или адрес">
+              <button class="search-button" onclick="search()">Поиск</button>
+            </div>
+            <div class="content" id="content"></div>
+
+        
+          <script src="flwebkit.js"></script>
+    </body>
+</html>

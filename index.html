@@ -1,0 +1,10 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+  var fleenOS_setup = localStorage.getItem("FleenOS_setup");
+  if (fleenOS_setup === "1") {
+    window.location.href = "res/desktop/index.html";
+  } else {
+    window.location.href = "res/oobe/index.html";
+  }
+});
+</script>

@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FleenAI</title>
+</head>
+<link id="theme-style" rel="stylesheet" href="guiblack.css">
+<script>
+    var selectedStyle = localStorage.getItem('FleenOS_selectedStyle');
+    if (selectedStyle) {
+    document.getElementById('theme-style').setAttribute('href', selectedStyle);
+    }
+  </script>
+<body>
+  <h1 class="adativetext">FleenAI</h1>
+  <div class="chat-container">
+    <input type="text" id="user-input">
+    <button onclick="sendMessage()">Отправить</button>
+    <div id="chat-messages"></div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="flai.js"></script>
+  <script>
+    function sendMessage() {
+    const userInput = $('#user-input').val();
+    displayMessage(userInput, 'user');
+
+    const botResponse = getBotResponse(userInput);
+    displayMessage(botResponse, 'bot');
+  }
+
+  function getBotResponse(userInput) {
+    const userInputLowerCase = userInput.toLowerCase();
+    let response = '';
+    let matchedCommands = [];
+    for (const command in commands) {
+      if (userInputLowerCase.includes(command)) {
+        const randomIndex = Math.floor(Math.random() * commands[command].length);
+        matchedCommands.push(commands[command][randomIndex]);
+      }
+    }
+    if (matchedCommands.length > 0) {
+      response = matchedCommands.join('<p class="adativetext">,</p>');
+    } else {
+      response = "<p class='adativetext'>Извините, я пока немного тупой.</p>";
+    }
+    return response;
+  }
+
+  function displayMessage(message, sender) {
+    const chatMessages = $('#chat-messages');
+    const messageClass = sender === '<h1>user</h1>' ? '<h1>user-message</h1>' : 'bot-message';
+    chatMessages.append(
+      `<div class="chat-message ${messageClass}"><p class="adativetext">${message}</p></div>`
+    );
+  }
+    var parentverdicoDocument = window.parentverdico.document;
+    var buttonInParentverdico = parentverdicoDocument.getElementById('verdico');
+  </script>
+</body>
+</html>

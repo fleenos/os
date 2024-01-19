@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FleenOS Setup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-image: url('bg.jpg');
+    }
+    .setup-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .setup-form {
+      max-width: 400px;
+      margin: auto;
+      display: none;
+    }
+    .setup-form.active {
+      display: block;
+      background-color: rgba(167, 167, 167, 0.644);
+      font-weight: 500;
+    border: 1px solid black;
+    min-width: 90px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    padding: 100px 115px 100px 115px;
+    border-radius: 6px;
+    position: fixed;
+    top: 30%;
+    }
+    .setup-form input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      box-sizing: border-box;
+    }
+    .setup-form button {
+        font-weight: 500;
+    border: 1px solid black;
+    color: black;
+    background-color: #ffffff6b;
+    min-width: 90px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    padding: 4px 14px 4px 14px;
+    border-radius: 6px;
+    }
+    .bgselector {
+  height: 77px;
+  border-radius: 21px;
+}
+
+.bgselectordiv {
+  background-color: rgba(0, 0, 0, 0);
+}
+  </style>
+</head>
+<body>
+  <div class="setup-container">
+    <div class="setup-form active" id="form1">
+      <h2>Установка FleenOS</h2>
+      <button onclick="nextForm()">Далее</button>
+    </div>
+    <div class="setup-form" id="form2">
+        <h2>Установка FleenOS</h2>
+        <script>
+          function setStyleAndNotify(styleName) {
+            localStorage.setItem('FleenOS_selectedStyle', styleName);
+            document.getElementById('theme-style').setAttribute('href', styleName);
+            window.parent.postMessage('themeChanged', '*');
+          }
+        </script>s
+<h3 class="settings-title">Цветовая тема</h3>
+<div>
+<button onclick="setStyleAndNotify('guiblack.css')">Темный стиль</button>
+<button onclick="setStyleAndNotify('guiwhite.css')">Светлый стиль</button>
+<button onclick="nextForm()">Далее</button>
+</div>
+    </div>
+    <div class="setup-form" id="form3">
+        <h2>Установка FleenOS</h2>
+        <h3 class="settings-title">Обои рабочего стола</h3>
+        <div class="bgselectordiv">
+        <img class="bgselector" src="../img/bg/image1.jpg" onclick="setSelectedBackground('../img/bg/image1.jpg')">
+        <img class="bgselector" src="../img/bg/image2.jpg" onclick="setSelectedBackground('../img/bg/image2.jpg')">
+        <img class="bgselector" src="../img/bg/image3.jpg" onclick="setSelectedBackground('../img/bg/image3.jpg')">
+        </div>
+        <script>
+        function setSelectedBackground(background) {
+          localStorage.setItem('selectedBackground', background);
+        }
+        </script>
+              <button onclick="nextForm()">Далее</button>
+              </div>
+    </div>
+
+    <div class="setup-form" id="form4">
+        <h2>Установка FleenOS</h2>
+      <h2>Жми далее </h2>
+      <input type="text" id="step4Input" placeholder="Step 4 input">
+      <button onclick="nextForm()">Далее</button>
+    </div>
+
+    <div class="setup-form" id="form5">
+        <h2>Установка FleenOS</h2>
+      <h2>Завершение установки</h2>
+      <input type="text" id="step5Input" placeholder="Step 5 input">
+      <button onclick="saveData()">Завершение установки</button>
+    </div>
+
+  </div>
+
+  <script>
+    var forms = document.querySelectorAll('.setup-form');
+    var currentFormIndex = 0;
+
+    function nextForm() {
+      if (currentFormIndex < forms.length - 1) {
+        forms[currentFormIndex].classList.remove('active');
+        currentFormIndex++;
+        forms[currentFormIndex].classList.add('active');
+      }
+    }
+
+    function saveData() {
+      localStorage.setItem('FleenOS_setup', '1');
+      window.location.href = "../desktop/index.html";
+    }
+  </script>
+</body>
+</html>

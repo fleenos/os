@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+      <meta charset="UTF-8">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap');
+        </style>
+          <link id="theme-style" rel="stylesheet" href="guiblack.css">
+        <script src="../script/bgcore.js"></script>
+        <script src="../script/jquery.js"></script>
+        <script src="../windowcore.js"></script>
+        <script src="../style/jquery-ui.js"></script>
+    </head>
+    <body id="background">
+    <div class="desktop"></div>
+        <div class="dock" id="dock">
+          <img onclick="openlnp()" src="Launchpadico.png" class="dockico">
+          <img onclick='WindowManager.createWindow("ver", 400, 400);' src="apps/ver/icon.png" class="dockico">
+          <img onclick='WindowManager.createWindow("calculator", 399, 410);' src="apps/calculator/icon.png" class="dockico">
+          <img onclick='WindowManager.createWindow("notepad", 399, 410);' src="apps/notepad/icon.png" class="dockico">
+          <img onclick="openaipad()" src="apps/FleenAI/icon.png" class="dockico">
+        </div>
+
+        <div class="Launchpad" id="Launchpad">
+          <h1 class="Launchpadh1" style="position: fixed; left: 10%;">Мои приложения</h1>
+          <div class="lapps" id="lapps">
+            <img id="verdico" onclick='WindowManager.createWindow("ver", 400, 400);' src="apps/ver/icon.png" class="dockico">
+            <img id="calcico" onclick='WindowManager.createWindow("calculator", 399, 410);' src="apps/calculator/icon.png" class="dockico">
+            <img id="npadico" onclick='WindowManager.createWindow("notepad", 399, 410);' src="apps/notepad/icon.png" class="dockico">
+            <img id="setico" onclick='WindowManager.createWindow("settings", 800, 600);' src="apps/settings/icon.png" class="dockico">
+            <img id="brwico" onclick='WindowManager.createWindow("browser", 800, 600);' src="apps/browser/icon.png" class="dockico">
+          </div>
+
+          <br>
+          <h1 class="Launchpadh1" style="position: fixed; top: 45%; left: 10%;">Активности</h1>
+          <div class="lactivity" id="launactivity">
+          </div>
+        </div>
+        <div class="aipad" id="aipad">
+          <iframe style="width: 28vw; height: 677px; border: none;" src="apps/FleenAI/index.html"></iframe>
+        </div>
+        <!--Скрипты-->
+        <script src="index.js"></script>
+    </body>
+</html>
+

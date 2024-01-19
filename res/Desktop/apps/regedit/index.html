@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regedit</title>
+  <meta charset="UTF-8">
+  <style>@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap');</style>
+  <link id="theme-style" rel="stylesheet" href="guiblack.css">
+  <script>var selectedStyle = localStorage.getItem('FleenOS_selectedStyle');
+  if (selectedStyle) {
+  document.getElementById('theme-style').setAttribute('href', selectedStyle);
+  } 
+  </script>
+</head>
+<body>
+    <div class="rpanel">
+    <h1 class="adativetext">Редактор реестра</h1>
+    <input type="text" id="keyInput" placeholder="Ключ">
+    <input type="text" id="valueInput" placeholder="Значение">
+    <button onclick="createOrUpdateParam()">Ок</button>
+    <button onclick="deleteParam()">Удалить</button>
+</div>
+    <div id="sidebar">
+        <ul>
+          <h3 class="adativetext">Редактор реестра</h3>
+          <ul id="paramList"></ul>
+      </div>
+  
+    <script>
+      function addPrefix(key) {
+        return "FleenOS_" + key;
+      }
+  
+      function removePrefix(key) {
+        if (key.startsWith("FleenOS_")) {
+          return key.substring(8);
+        }
+        return key;
+      }
+  
+      function createOrUpdateParam() {
+        const key = document.getElementById("keyInput").value;
+        const value = document.getElementById("valueInput").value;
+        localStorage.setItem(addPrefix(key), value);
+        updateParamList();
+      }
+  
+      function readParam() {
+        const key = document.getElementById("keyInput").value;
+        const value = localStorage.getItem(addPrefix(key));
+        if (value) {
+          document.getElementById("valueInput").value = value;
+        } else {
+          alert("Value not found for the specified key.");
+        }
+      }
+  
+      function deleteParam() {
+        const key = document.getElementById("keyInput").value;
+        localStorage.removeItem(addPrefix(key));
+        updateParamList();
+      }
+  
+      function updateParamList() {
+        const keys = Object.keys(localStorage);
+        const fleenOSKeys = keys.filter(key => key.startsWith("FleenOS_")).map(removePrefix);
+        const paramList = document.getElementById("paramList");
+        paramList.innerHTML = "";
+        fleenOSKeys.forEach(key => {
+          const li = document.createElement("li");
+          li.textContent = key;
+          li.addEventListener("click", function() {
+            document.getElementById("keyInput").value = key;
+            document.getElementById("valueInput").value = localStorage.getItem(addPrefix(key));
+          });
+          paramList.appendChild(li);
+        });
+      }
+  
+      updateParamList();
+    </script>  
+</body>
+</html>
